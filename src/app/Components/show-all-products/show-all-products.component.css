@@ -1,0 +1,171 @@
+.my-4 {
+    margin-top: 7rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.filter-section {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section h5 {
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card img:hover {
+    transform: scale(1.1);
+}
+
+.product-card .card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.product-card .card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.product-card .card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.product-card .btn-primary {
+    background-color: #ffc400b7;
+    border-color: #fffffd;
+    color: black;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+}
+
+.product-card .btn-primary:hover {
+    background-color: #ffc400;
+    transform: scale(1.05);
+}
+
+.form-check-input:checked+.form-check-label {
+    font-weight: bold;
+    color: #111111d4;
+    padding-left: 5px;
+}
+
+/* Custom radio button styling */
+.form-check-input:checked {
+    background-color: #00337d;
+    border-color: #00337d;
+}
+
+.form-check-input:checked:focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 51, 125, 0.25);
+}
+
+.form-check-input {
+    margin-right: 10px;
+}
+
+.form-check-label {
+    padding-left: 5px;
+}
+
+.offcanvas-bottom {
+    height: 75%;
+}
+
+.btn.btn-primary.d-sm-block.d-lg-none {
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+}
+
+.custom-span {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-weight: 600;
+    color: red;
+}
+
+.pagination-black .page-item.active .page-link {
+    background-color: #000000;
+    color: white !important;
+    border-color: #000000;
+}
+
+.pagination-black .page-link {
+    color: black !important;
+    background-color: white;
+    border: 1px solid #dee2e6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination-black .page-link:hover {
+    background-color: #f0f0f0;
+    color: black;
+}
+
+.pagination-black .page-item.disabled .page-link {
+    background-color: #e9ecef;
+    color: #6c757d;
+    pointer-events: none;
+}
+
+/* price */
+.price-category {
+    margin-bottom: 20px;
+}
+
+.new-price {
+    font-size: 20px;
+    color: #e74c3c;
+    font-weight: 500;
+}
+
+.old-price {
+    font-size: 18px;
+    color: #888;
+    text-decoration: line-through;
+    font-weight: 500;
+
+    margin-left: 10px;
+}
+/* Adjust the font size and other properties for large screens */
+@media (min-width: 992px) {
+    .custom-span {
+        margin-left: 340px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        font-weight: 600;
+        color: red;
+    }
+}

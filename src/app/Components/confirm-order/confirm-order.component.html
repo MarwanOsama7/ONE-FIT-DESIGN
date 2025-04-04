@@ -1,0 +1,137 @@
+<div class="container mb-5" *ngIf="orderData">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="text-left logo p-2 px-5">
+                    <svg width="50" height="50" viewBox="0 0 24 24" fill="#26AF74" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="none" stroke="#26AF74" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                            <circle cx="12" cy="12" r="9" />
+                            <path stroke-dasharray="14" stroke-dashoffset="14" d="M8 12L11 15L16 10">
+                                <animate fill="freeze" attributeName="stroke-dashoffset" dur="0.2s" values="14;0" />
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="invoice" style="text-align: center;">
+                    <h5>Thank You!</h5>
+                    <span class="font-weight-bold d-block mt-4">Hello, {{ orderData.client.username }}</span>
+                    <span>Your order has been confirmed and will be shipped in the next {{shippingdays}} days!</span>
+                    <!-- Add Track Order Link Here -->
+                    <p class="font-weight-bold mb-0"><a [routerLink]="['/ordertracing']" class="text-primary">
+                            Click here to trace your order</a></p>
+                    <div class="payment border-top mt-3 mb-3 border-bottom table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="py-2"> <span class="d-block text-muted">Order Date</span>
+                                            <span>{{currentDate | date: 'dd MMMM, yyyy' }}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="py-2"> <span class="d-block text-muted">Order No</span>
+                                            <span>{{ orderData.requestOrder.code }}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="py-2"> <span class="d-block text-muted">Payment</span>
+                                            <span>
+                                                <!-- Add your SVG icon here -->
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="#1C2033"
+                                                    xmlns="http://www.w3.org/2000/svg" class="h-full w-full"
+                                                    style="display:inline-block; vertical-align:middle;">
+                                                    <g fill="#1C2033">
+                                                        <path fill="currentColor"
+                                                            d="M16 11.5a2.5 2.5 0 0 1 5 0a2.5 2.5 0 0 1-5 0M13 3v17h11V3H13m9 13c-1.1 0-2 .9-2 2h-3a2 2 0 0 0-2-2V7c1.11 0 2-.89 2-2h3a2 2 0 0 0 2 2v9M7 6c1.1 0 2 .9 2 2s-.9 2-2 2s-2-.9-2-2s.9-2 2-2m0-2C4.79 4 3 5.79 3 8s1.79 4 4 4s4-1.79 4-4s-1.79-4-4-4m0 10c-3.87 0-7 1.79-7 4v2h11v-2H2c0-.58 1.75-2 5-2c1.83 0 3.17.45 4 .95v-2.23C9.87 14.27 8.5 14 7 14Z" />
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="py-2"> <span class="d-block text-muted">Shipping Address</span>
+                                            <span>{{ orderData.client.address }}, {{ orderData.client.city }}</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="product border-bottom table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                <tr *ngFor="let item of orderData.items">
+                                    <td width="20%"> <img src="{{item.img}}" width="90"> </td>
+                                    <td width="60%"> <span class="font-weight-bold">{{ item.name }}</span>
+                                        <div class="product-qty">
+                                            <span class="d-block">Quantity: {{ item.quantity }}</span>
+                                            <span>Color: {{ item.colorName }}</span>
+                                            <span>Size: {{ item.size }}</span>
+                                        </div>
+                                    </td>
+                                    <td width="20%">
+                                        <div class="text-right"> <span class="font-weight-bold">EGP
+                                                {{item.price}}</span> </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="row d-flex justify-content-end">
+                        <div class="col-md-5">
+                            <table class="table table-borderless">
+                                <tbody class="totals">
+                                    <tr>
+                                        <td>
+                                            <div class="text-left"> <span class="text-muted">Subtotal</span> </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-right"> <span>EGP {{subtotal}}</span> </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-left"> <span class="text-muted">Shipping Fee</span> </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-right"> <span>EGP {{shippingPrice}}</span> </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="text-left"> <span class="text-muted">Tax Fee</span> </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-right"> <span>Free</span> </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-top border-bottom">
+                                        <td>
+                                            <div class="text-left"> <span class="font-weight-bold">Total</span> </div>
+                                        </td>
+                                        <td>
+                                            <div class="text-right"> <span class="font-weight-bold">EGP {{
+                                                    orderData.requestOrder.totalPrice }}</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <p>We will send you a shipping confirmation email when the item has shipped successfully!</p>
+                    <p class="font-weight-bold mb-0">Thanks for shopping with us!</p> <span>ONE FIT Team</span>
+                </div>
+                <!-- Footer with dynamic date -->
+                <div class="d-flex justify-content-between footer p-3">
+                    <span>Need Help? Visit our <a href="#">Help Center</a></span>
+                    <span>{{ currentDate | date: 'dd MMMM, yyyy' }}</span> <!-- Angular DatePipe used here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

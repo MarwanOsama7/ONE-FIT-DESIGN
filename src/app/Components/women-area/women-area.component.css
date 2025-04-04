@@ -1,0 +1,63 @@
+ /* Adjust padding for small screens */
+@media (max-width: 768px) {
+    #men {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    #men .section-heading {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    #men .section-heading h2 {
+        font-size: 20px;
+    }
+
+    #men .section-heading span {
+        font-size: 14px;
+    }
+
+    #men .item .down-content h4 {
+        font-size: 18px;
+    }
+
+    #men .item .down-content .price-before-discount,
+    #men .item .down-content .price-after-discount,
+    #men .item .down-content .price-no-discount {
+        font-size: 14px;
+    }
+
+    #men .item .thumb {
+        margin-bottom: 15px;
+    }
+
+    #men .owl-nav .owl-prev,
+    #men .owl-nav .owl-next {
+        left: -50px;
+        right: -50px;
+    }
+}
+
+/* Adjust for extra small screens */
+@media (max-width: 576px) {
+    #men .item .down-content h4 {
+        font-size: 16px;
+    }
+
+    #men .item .down-content .price-before-discount,
+    #men .item .down-content .price-after-discount,
+    #men .item .down-content .price-no-discount {
+        font-size: 12px;
+    }
+
+    #men .item .thumb img {
+        width: 100%;
+        height: auto;
+    }
+
+    #men .owl-nav {
+        display: none;
+        /* Hide navigation for small screens */
+    }
+}

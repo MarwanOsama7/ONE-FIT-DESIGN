@@ -1,0 +1,40 @@
+.checkout-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-weight: bold;
+    width: 300px;
+    height: 75px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    width: 62%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+.navbar-text-container {
+    margin-left: 20px;
+}
+
+.icon-shoping {
+    font-size: 40px;
+    color: #a10d08;
+}
+
+@media (max-width:991px) {
+    .logo {
+        width: 200px;
+        height: 60px;
+    }
+
+    .icon-shoping {
+        font-size: 30px;
+    }
+}

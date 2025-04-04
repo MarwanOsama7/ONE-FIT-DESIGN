@@ -1,0 +1,109 @@
+<div class="container my-5">
+    <div class="row">
+        <!-- Image Section -->
+        <div class="col-md-6">
+            <!-- Main Image -->
+            <div class="main-image mb-4">
+                <img [src]="selectedImage" class="img-fluid rounded" alt="Main Product Image" />
+            </div>
+
+            <!-- Thumbnail Images with Arrows -->
+            <div class="position-relative">
+                <!-- Left Arrow -->
+                <button class="arrow-btn left-arrow" (click)="scrollThumbnails('left')">
+                    <svg width="24" height="24" viewBox="0 0 25 24" fill="#343C54" xmlns="http://www.w3.org/2000/svg"
+                        transform="rotate(90 0 0)">
+                        <path
+                            d="M5.54779 9.09467C5.84069 8.80178 6.31556 8.80178 6.60846 9.09467L12.3281 14.8143L18.0478 9.09467C18.3407 8.80178 18.8156 8.80178 19.1085 9.09467C19.4013 9.38756 19.4013 9.86244 19.1085 10.1553L12.8585 16.4053C12.5656 16.6982 12.0907 16.6982 11.7978 16.4053L5.54779 10.1553C5.2549 9.86244 5.2549 9.38756 5.54779 9.09467Z"
+                            fill="#343C54" />
+                    </svg>
+                </button>
+
+                <!-- Thumbnails -->
+                <div class="thumbnails d-flex" (mousedown)="startScroll($event)" (mousemove)="onScroll($event)"
+                    (mouseup)="endScroll()" (mouseleave)="endScroll()" (touchstart)="startScroll($event)"
+                    (touchmove)="onScroll($event)" (touchend)="endScroll()">
+                    <img *ngFor="let image of images" [src]="image" class="thumbnail-image me-2"
+                        [class.selected]="image === selectedImage" (click)="selectImage(image)" alt="Thumbnail Image" />
+                </div>
+
+                <!-- Right Arrow -->
+                <button class="arrow-btn right-arrow" (click)="scrollThumbnails('right')">
+                    <svg width="24" height="24" viewBox="0 0 25 24" fill="#343C54" xmlns="http://www.w3.org/2000/svg"
+                        transform="rotate(270 0 0)">
+                        <path
+                            d="M5.54779 9.09467C5.84069 8.80178 6.31556 8.80178 6.60846 9.09467L12.3281 14.8143L18.0478 9.09467C18.3407 8.80178 18.8156 8.80178 19.1085 9.09467C19.4013 9.38756 19.4013 9.86244 19.1085 10.1553L12.8585 16.4053C12.5656 16.6982 12.0907 16.6982 11.7978 16.4053L5.54779 10.1553C5.2549 9.86244 5.2549 9.38756 5.54779 9.09467Z"
+                            fill="#343C54" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="col-md-6">
+            <h2 class="product-name">{{ productName }}</h2>
+            <div class="price-category">
+                <span class="new-price">{{ priceAfterDiscount }} EGP</span>
+                <span class="old-price" *ngIf="price !== priceAfterDiscount">{{ price }} EGP</span>
+                <span class="discount-box" *ngIf="price !== priceAfterDiscount">
+                    -{{ ((price - priceAfterDiscount) / price * 100) | number:'1.0-0' }}%
+                </span>
+            </div>
+            
+
+            <p *ngIf="firstItem">{{ firstItem }}</p>
+            <ul class="item-list">
+                <li *ngFor="let item of remainingItems">{{ item }}</li>
+            </ul>
+
+
+            <!-- Sizes -->
+            <div class="sizes my-4">
+                <h5 class="h5-details">Sizes: <span>{{ selectedSize }}</span></h5>
+                <div role="group" class="size-buttons">
+                    <button *ngFor="let size of sizes" type="button" class="btn btn-outline-dark"
+                        [class.active]="size.sizeValue === selectedSize" [disabled]="size.stockQuantity === 0"
+                        (click)="selectSize(size)">
+                        {{ size.sizeValue }}
+                    </button>
+                </div>
+            </div>
+
+            <!-- Color -->
+            <div class="color-selection">
+                <h5 class="h5-details">Colors : <span>{{ selectedColor?.colorName }}</span></h5>
+                <div class="color-options">
+                    <span *ngFor="let color of colors" [class.selected]="color === selectedColor"
+                        (click)="selectColor(color)">
+                        <img [src]="color.images[0]" class="color-image" alt="{{ color.colorName }}">
+                    </span>
+                </div>
+            </div>
+
+
+
+            <h5 class="h5-details">Quantity:</h5>
+            <div class="quantity-container">
+                <button (click)="decrement()" class="quantity-btn decrease" aria-label="Decrease quantity">−</button>
+                <input [(ngModel)]="number" type="number" class="quantity-input" min="1" aria-label="Product quantity">
+                <button (click)="increment()" class="quantity-btn increase" aria-label="Increase quantity">+</button>
+            </div>
+
+            <!-- Add to Cart -->
+            <!-- Add to Cart / Out of Stock -->
+            <div class="action-buttons">
+                <button *ngIf="!isOutOfStock" class="add-to-cart" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" (click)="addToCart()">
+                    Add to Cart
+                </button>
+
+                <button *ngIf="isOutOfStock" class="out-of-stock-btn" type="button" disabled>
+                    Out of Stock
+                </button>
+
+                <button *ngIf="!isOutOfStock" class="buy-now" type="button" (click)="buyNow()">Buy Now</button>
+            </div>
+
+        </div>
+    </div>
+</div>

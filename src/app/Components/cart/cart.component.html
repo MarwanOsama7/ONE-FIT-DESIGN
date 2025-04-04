@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row my-3 my-cart">
+        <div class="col-4 text-left">
+            <a href="#" class="btn btn-link continue-shopping"
+                style="color: #101113; text-decoration: none; font-weight: bold; display: inline-block;">
+                &lt; <span class="shopping-text">Continue Shopping</span>
+            </a>
+        </div>
+        <div class="col-4 text-center">
+            <h4>My Cart</h4>
+        </div>
+        <div class="col-4">
+            <!-- This column is left empty to center the "My Cart" text -->
+        </div>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-center row">
+        <div *ngFor="let temp of orders" class="col-12 col-md-10">
+            <div class="row p-2 bg-white border rounded position-relative">
+                <button class="btn-close" aria-label="Close" (click)="removeOrder(temp)"
+                    style="position: absolute; right: 10px; top: 10px;">&#x2715;</button>
+                <div class="col-4 col-sm-3 mt-1">
+                    <img class="img-fluid img-responsive rounded product-image" [src]="temp.img">
+                </div>
+                <div
+                    class="col-8 col-sm-6 mt-1 d-flex flex-column flex-sm-row align-items-start justify-content-between custom-padding">
+                    <div class="info-container">
+                        <p class="mb-1"><strong>{{temp.name}}</strong></p>
+                        <p class="mb-1"><strong>Color: </strong>{{temp.color}}</p>
+                        <p class="mb-1"><strong>Size: </strong>{{temp.size}}</p>
+                        <p class="mb-1"><strong>EGP {{temp.priceAfterdiscount}}</strong></p>
+                    </div>
+                    <div class="quantity-container mt-2 mt-sm-0">
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-outline-secondary" (click)="decreaseQuantity(temp)">-</button>
+                            <input class="form-control mx-2" [(ngModel)]="temp.quantity"
+                                (ngModelChange)="onQuantityChange(temp)" type="number" min="1">
+                            <button class="btn btn-outline-secondary" (click)="increaseQuantity(temp)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div *ngIf="orders.length == 0 " class="alert alert-danger" role="alert">
+        Your cart is currently empty.
+    </div>
+    <div class="checkout-summary">
+        <!-- <div class="checkout-header">
+            <h2>Order Summary</h2>
+        </div> -->
+        <div class="checkout-details">
+            <div class="detail-row">
+                <span>Subtotal:</span>
+                <span>{{ totalPrice | currency: 'EGP' }}</span>
+            </div>
+            <div class="detail-row">
+                <span>Tax:</span>
+                <span>Included</span>
+            </div>
+            <div class="detail-row">
+                <span>Shipping:</span>
+                <span>Calculated at checkout</span>
+            </div>
+        </div>
+        <div class="checkout-total">
+            <div class="total-row">
+                <span>Total:</span>
+                <span>{{ totalPrice | currency: 'EGP' }}</span>
+            </div>
+        </div>
+        <button class="checkout-button" (click)="onCheckout()">Proceed to Checkout</button>
+    </div>
+
+
+</div>

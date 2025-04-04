@@ -1,0 +1,221 @@
+.fixed-icons {
+    position: fixed;
+    left: 15px;
+    bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Space between icons */
+    z-index: 1000;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Messenger Icon */
+.icon.messenger {
+    background-image: url('\src\assets\images\massenger.jpg');
+    /* Reliable Messenger logo */
+}
+
+.icon.messenger:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(24, 119, 242, 0.4);
+}
+
+/* WhatsApp Icon */
+.icon.whatsapp {
+    background-image: url('\src\assets\images\Whatsapp_logo_2022.jpg');
+}
+
+.icon.whatsapp:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(37, 211, 102, 0.4);
+}
+
+/* Instagram Icon */
+.icon.instagram {
+    background-image: url('\src\assets\images\Instagram_icon.png');
+}
+
+.icon.instagram:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(228, 64, 95, 0.4);
+}
+
+
+
+
+/* .fixed-icons {
+    position: fixed;
+    left: 15px;
+    bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 24px;
+    border-radius: 50%;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.icon.facebook {
+    background: linear-gradient(145deg, #1877f2, #145db8);
+}
+
+.icon.facebook:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(24, 119, 242, 0.4);
+}
+
+.icon.whatsapp {
+    background: linear-gradient(145deg, #25d366, #1c9c51);
+}
+
+.icon.whatsapp:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(37, 211, 102, 0.4);
+}
+
+.icon.instagram {
+    background: radial-gradient(circle at 30% 30%,
+            #feda75,
+            #fa7e1e,
+            #d62976,
+            #962fbf,
+            #4f5bd5);
+}
+
+.icon.instagram:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+.icon.instagram:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+ */
+
+
+/* .social-container {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.toggle-button {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ce0202;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(247, 6, 6, 0.507);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 10px;
+
+}
+
+.toggle-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.fixed-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 24px;
+    border-radius: 50%;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.icon.facebook {
+    background: linear-gradient(145deg, #1877f2, #145db8);
+}
+
+.icon.facebook:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(24, 119, 242, 0.4);
+}
+
+.icon.whatsapp {
+    background: linear-gradient(145deg, #25d366, #1c9c51);
+}
+
+.icon.whatsapp:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(37, 211, 102, 0.4);
+}
+
+.icon.instagram {
+    background: linear-gradient(145deg, #e4405f, #d6249f);
+}
+
+.icon.instagram:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(228, 64, 95, 0.4);
+}
+
+.icon.tiktok {
+    background: linear-gradient(145deg, #010101, #050505);
+}
+
+.icon.tiktok:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(1, 1, 1, 0.4);
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} */

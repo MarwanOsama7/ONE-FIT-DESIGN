@@ -1,0 +1,150 @@
+<div class="container my-4">
+    <div class="row">
+        <!-- Toggle Button for Offcanvas -->
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="custom-span">{{ totalResults }} Results For '{{ categoryName }}'</span>
+            <button class="btn btn-primary d-sm-block d-lg-none" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">
+                Filter <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-filter" width="24"
+                    height="24">
+                    <path d="M3 4h18l-7 10v6l-4-2v-4L3 4z" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Offcanvas -->
+        <div class="offcanvas offcanvas-bottom custom-offcanvas-height" tabindex="-1" id="offcanvasBottom"
+            aria-labelledby="offcanvasBottomLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasBottomLabel">Filters & Categories</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body small">
+                <!-- Filters and Categories Content -->
+                <div class="filter-section">
+                    <h5>Categories</h5>
+
+                    <div class="mb-3" *ngFor="let categoryTypeName of categoryTypeNames">
+                        <input type="checkbox" class="form-check-input" [id]="categoryTypeName"
+                            [value]="categoryTypeName" (change)="onCategoryTypeChange($event, categoryTypeName)">
+                        <label class="form-check-label" [for]="categoryTypeName">{{ categoryTypeName }}</label>
+                    </div>
+
+
+                    <!-- <h5>Filters</h5>
+                    <form>
+                        <div class="mb-4">
+                            <label for="priceRange" class="form-label">Price Range</label>
+                            <input type="range" class="form-range" id="priceRange" min="0" max="1000">
+                            <div class="d-flex justify-content-between">
+                                <span>$0</span>
+                                <span>$1000</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Color</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="redColor">
+                                <label class="form-check-label" for="redColor">Red</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="blueColor">
+                                <label class="form-check-label" for="blueColor">Blue</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                    </form> -->
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Filters and Categories Section -->
+        <aside class="col-lg-3 filter-section d-none d-lg-block">
+            <h5>Categories</h5>
+
+            <div class="mb-3" *ngFor="let categoryTypeName of categoryTypeNames">
+                <input type="checkbox" class="form-check-input" [id]="categoryTypeName" [value]="categoryTypeName"
+                    (change)="onCategoryTypeChange($event, categoryTypeName)">
+                <label class="form-check-label" [for]="categoryTypeName">{{ categoryTypeName }}</label>
+            </div>
+
+            <!-- <h5>Filters</h5>
+            <form>
+                <div class="mb-4">
+                    <label for="priceRange" class="form-label">Price Range</label>
+                    <input type="range" class="form-range" id="priceRange" min="0" max="1000">
+                    <div class="d-flex justify-content-between">
+                        <span>$0</span>
+                        <span>$1000</span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+            </form> -->
+        </aside>
+
+        <!-- Products Section -->
+        <main class="col-lg-9">
+            <div class="product-grid">
+                <div class="card product-card" *ngFor="let product of filteredProducts">
+                    <!-- Dynamically load the image URL -->
+                    <a [routerLink]="['/productdetails' , product.slug]">
+                        <img [src]="getRandomImageUrl(product.id)" class="card-img-top" alt="Product">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <div class="price-category">
+                            <span class="new-price">{{product.priceAfterdiscount }} EGP</span>
+                            <span class="old-price" *ngIf="product.price !== product.priceAfterdiscount">
+                                {{product.price}} EGP</span>
+                        </div>
+                        <!-- <p class="card-text">{{ product.price | currency }}</p> -->
+                        <button [routerLink]="['/productdetails' , product.slug]" class="btn btn-primary">View
+                            Details</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- pagination -->
+        <nav aria-label="Page navigation example" class="mt-4">
+            <ul class="pagination pagination-black d-flex justify-content-center w-100">
+                <li class="page-item" (click)="previousPage()" [class.disabled]="!hasPreviousPage()"
+                    style="user-select: none; cursor: pointer;">
+                    <a class="page-link" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item" *ngFor="let page of pageNumbers" (click)="changePage(page)"
+                    [class.active]="page === currentPage + 1" style="user-select: none; cursor: pointer;">
+                    <a class="page-link">{{ page }}</a>
+                </li>
+                <li class="page-item" (click)="nextPage()" [class.disabled]="!hasNextPage()"
+                    style="user-select: none; cursor: pointer;">
+                    <a class="page-link" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+
+
+</div>
+
+
+<!-- <div class="mb-4">
+                    <label class="form-label">Color</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="redColor">
+                        <label class="form-check-label" for="redColor">Red</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="blueColor">
+                        <label class="form-check-label" for="blueColor">Blue</label>
+                    </div>
+                </div> -->

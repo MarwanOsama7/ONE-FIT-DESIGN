@@ -1,0 +1,253 @@
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12">
+                <nav class="main-nav d-flex justify-content-between align-items-center">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="index.html" class="logo">
+                        <img src="assets/images/org logo.png">
+                    </a>
+                    <!-- ***** Logo End ***** -->
+
+                    <!-- Default Menu (Hidden on Small Screens) -->
+                    <ul class="nav d-none d-md-flex">
+                        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                        <li class="scroll-to-section" *ngFor="let category of categories">
+                            <a [routerLink]="['/showproduct/category', category.name]"
+                                [queryParams]="{ categoryHoldName: category.name }">{{ category.name }}</a>
+                        </li>
+                        <li class="submenu">
+                            <a href="javascript:;">Pages</a>
+                            <ul>
+                                <li><a [routerLink]="['/about-us']">About Us</a></li>
+                                <!-- <li><a href="products.html">Products</a></li>
+                                <li><a href="single-product.html">Single Product</a></li> -->
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </li>
+                        <li class="scroll-to-section"><a href="#explore">Explore</a></li>
+                        <!-- ***** Cart Icon with Count Start ***** -->
+
+                        <a [routerLink]="['/cart']" class="cart-link">
+                            <span class="cart-text">My Cart</span>
+                            <div class="cart-icon-wrapper">
+                                <!-- Custom SVG Icon for Cart -->
+                                <svg width="24px" height="24px" viewBox="0 0 16 16" fill="#000000" role="img"
+                                    style="display:inline-block;vertical-align:middle">
+                                    <g fill="black">
+                                        <path fill="currentColor"
+                                            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2a1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0a2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2a1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0a2 2 0 1 1-4 0z" />
+                                    </g>
+                                </svg>
+                                <span class="cart-count">{{cartCount}}</span>
+                            </div>
+                        </a>
+                        <!-- <a [routerLink]="['/cart']" class="nav-link-cart">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="#343C54"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M2.316 3.25c-.414 0-.75.336-.75.75s.336.75.75.75h1.18c.374 0 .69.276.742.646l1.254 8.918c.157 1.11 1.107 1.936 2.229 1.936h10.344c.414 0 .75-.336.75-.75s-.336-.75-.75-.75H7.722c-.374 0-.69-.275-.742-.646l-.12-.854h10.852c.985 0 1.856-.641 2.148-1.582l1.922-6.188c.07-.228.029-.475-.113-.667-.141-.191-.366-.305-.604-.305H5.517c-.37-.752-1.143-1.257-2.021-1.257H2.316ZM5.841 6.008l.807 5.742h11.064c.328 0 .619-.213.716-.527l1.62-5.215H5.841ZM7.784 17.75c-.966 0-1.75.784-1.75 1.75s.784 1.75 1.75 1.75 1.75-.784 1.75-1.75-.784-1.75-1.75-1.75ZM14.57 19.5c0-.966.784-1.75 1.75-1.75s1.75.784 1.75 1.75-.784 1.75-1.75 1.75-1.75-.784-1.75-1.75Z" />
+                            </svg>
+                            <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
+                        
+                        </a> -->
+
+                        <!-- ***** Cart Icon with Count End ***** -->
+                    </ul>
+
+                    <!-- Toggle Button (Visible on Small Screens) -->
+                    <div class="cart-container">
+                        <button class="add-to-cart" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                            <div class="cart-icon">
+                                <svg width="32px" height="32px" viewBox="0 0 16 16" fill="black" role="img">
+                                    <g fill="black">
+                                        <path fill="currentColor"
+                                            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2a1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0a2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2a1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0a2 2 0 1 1-4 0z">
+                                        </path>
+                                    </g>
+                                </svg>
+                                <span class="cart-count-offcanvas">5</span>
+                            </div>
+                        </button>
+                        <button class="navbar-toggler custom-toggler d-md-none ms-auto" type="button"
+                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu" aria-controls="offcanvasMenu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+ 
+
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ***** Header Area End ***** -->
+
+<!-- Offcanvas for Small Screens -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenu" aria-labelledby="offcanvasMenuLabel">
+    <div class="offcanvas-header">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="navbar-nav">
+            <button [routerLink]="['/cart']" type="button" class="btn btn-outline-dark custum-cart-button"
+                data-bs-dismiss="offcanvas">My Cart
+                (4)
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#343C54" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M2.316 3.25c-.414 0-.75.336-.75.75s.336.75.75.75h1.18c.374 0 .69.276.742.646l1.254 8.918c.157 1.11 1.107 1.936 2.229 1.936h10.344c.414 0 .75-.336.75-.75s-.336-.75-.75-.75H7.722c-.374 0-.69-.275-.742-.646l-.12-.854h10.852c.985 0 1.856-.641 2.148-1.582l1.922-6.188c.07-.228.029-.475-.113-.667-.141-.191-.366-.305-.604-.305H5.517c-.37-.752-1.143-1.257-2.021-1.257H2.316ZM5.841 6.008l.807 5.742h11.064c.328 0 .619-.213.716-.527l1.62-5.215H5.841ZM7.784 17.75c-.966 0-1.75.784-1.75 1.75s.784 1.75 1.75 1.75 1.75-.784 1.75-1.75-.784-1.75-1.75-1.75ZM14.57 19.5c0-.966.784-1.75 1.75-1.75s1.75.784 1.75 1.75-.784 1.75-1.75 1.75-1.75-.784-1.75-1.75Z" />
+                </svg>
+            </button>
+            <li class="nav-items my-1" *ngFor="let category of categories; let i = index">
+                <div class="line-container">
+                    <div class="line-above"></div>
+                    <div class="offers-container">
+                        <div class="offers-link-container">
+                            <a href="" style="text-decoration: none;color: black;"
+                                data-bs-dismiss="offcanvas">{{category.name}}</a>
+                        </div>
+                        <a href="#collapse{{i}}" data-bs-toggle="collapse"
+                            class="nav-link text-black d-flex align-items-center arrow-link"
+                            (click)="toggleCategory(i)">
+
+                            <svg [class.rotate]="openCategory === i" width="20" height="20" viewBox="0 0 25 24"
+                                fill="#343C54" xmlns="http://www.w3.org/2000/svg" transform="rotate(-90 0 0)">
+                                <path
+                                    d="M15.2335 5.21967C15.5263 5.51256 15.5263 5.98744 15.2335 6.28033L9.51379 12L15.2335 17.7197C15.5263 
+                                                        18.0126 15.5263 18.4874 15.2335 18.7803C14.9406 19.0732 14.4657 19.0732 14.1728 18.7803L7.92279 12.5303C7.6299 
+                                                        12.2374 7.6299 11.7626 7.92279 11.4697L14.1728 5.21967C14.4657 4.92678 14.9406 4.92678 15.2335 5.21967Z"
+                                    fill="#343C54" />
+                            </svg>
+
+                        </a>
+                    </div>
+                    <div class="line-below"></div>
+                </div>
+
+                <!-- Unique collapse for each category -->
+                <ul class="nav collapse ms-1 flex-column" id="collapse{{i}}" [class.show]="openCategory === i">
+                    <li class="nav-items" *ngFor="let categoryType of category.categorytype">
+                        <a class="nav-link text-black" aria-current="page"
+                            data-bs-dismiss="offcanvas">{{categoryType.name}}</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-items my-1">
+                <div class="line-container">
+                    <div class="line-above"></div>
+                    <div class="offers-container">
+                        <div class="offers-link-container">
+                            <a [routerLink]="['/showproduct/getAlldiscount']"
+                                [queryParams]="{ categoryHoldName: 'Offers' }"
+                                style="text-decoration: none; color: black;" data-bs-dismiss="offcanvas">
+                                Offers
+                            </a>
+                        </div>
+                        <a href="#collapseOffer1" data-bs-toggle="collapse"
+                            class="nav-link text-black d-flex align-items-center arrow-link">
+                            <svg width="20" height="20" viewBox="0 0 25 24" fill="#343C54"
+                                xmlns="http://www.w3.org/2000/svg" transform="rotate(-90 0 0)">
+                                <path
+                                    d="M15.2335 5.21967C15.5263 5.51256 15.5263 5.98744 15.2335 6.28033L9.51379 12L15.2335 17.7197C15.5263 18.0126 15.5263 18.4874 15.2335 18.7803C14.9406 19.0732 14.4657 19.0732 14.1728 18.7803L7.92279 12.5303C7.6299 12.2374 7.6299 11.7626 7.92279 11.4697L14.1728 5.21967C14.4657 4.92678 14.9406 4.92678 15.2335 5.21967Z"
+                                    fill="#343C54" />
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="line-below"></div>
+                </div>
+
+                <ul class="nav collapse ms-1 flex-column" id="collapseOffer1">
+                    <li class="nav-items">
+                        <a [routerLink]="['/showproduct/getdiscount']" [queryParams]="{ name: 'All Offers' }"
+                            class="nav-link text-black" aria-current="page" data-bs-dismiss="offcanvas">All Offers</a>
+                    </li>
+                    <li class="nav-items">
+                        <a [routerLink]="['/showproduct/discountsUpTo50']" [queryParams]="{ name: 'Up To 50' }"
+                            class="nav-link text-black" aria-current="page" data-bs-dismiss="offcanvas">Up to 50%</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-items my-1">
+                <a [routerLink]="['/signin']" class="menu-link" data-bs-dismiss="offcanvas">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="20" height="20"
+                        fill="currentColor">
+                        <path
+                            d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm89.6 32h-8.7c-22.5 10.2-47.4 16-74.9 16s-52.4-5.8-74.9-16h-8.7C60.3 288 0 348.3 0 422.4c0 40.4 32.8 73.6 73.2 73.6h301.6c40.4 0 73.2-32.8 73.2-73.6c0-74.1-60.3-134.4-134.4-134.4z" />
+                    </svg>
+                    Log In/Create Account
+                </a>
+            </li>
+        </ul>
+
+        <!-- Social Media Links -->
+        <div class="social-media-wrapper">
+            <ul class="list-unstyled d-flex justify-content-center">
+                <li class="me-3">
+                    <a href="https://www.facebook.com/profile.php?id=100086945872113"
+                        class="link-dark link-opacity-75-hover" data-bs-dismiss="offcanvas" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            viewBox="0 0 320 512">
+                            <path
+                                d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S259.88 0 225.36 0c-73.22 0-121.14 44.38-121.14 124.72v70.62H32v92.66h72.22V512h100.2V288z" />
+                        </svg>
+                    </a>
+                </li>
+                <li class="me-3">
+                    <a href="#!" class="link-dark link-opacity-75-hover" data-bs-dismiss="offcanvas"
+                        aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            viewBox="0 0 576 512">
+                            <path
+                                d="M549.655 124.083c-6.281-23.661-24.853-42.333-48.515-48.614C457.32 64 288 64 288 64S118.68 64 74.86 75.469c-23.662 6.281-42.334 24.853-48.615 48.614C16 167.88 16 256 16 256s0 88.12 10.245 131.917c6.281 23.661 24.853 42.333 48.515 48.614C118.68 448 288 448 288 448s169.32 0 213.14-11.469c23.662-6.281 42.334-24.853 48.615-48.614C560 344.12 560 256 560 256s0-88.12-10.245-131.917zM232 336V176l144 80-144 80z" />
+                        </svg>
+                    </a>
+                </li>
+                <li class="me-3">
+                    <a href="https://www.instagram.com/briskshoesstore" class="link-dark link-opacity-75-hover"
+                        data-bs-dismiss="offcanvas" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#343C54"
+                            xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
+                            <path
+                                d="M8.6672 12C8.6672 10.1591 10.1591 8.6664 12 8.6664C13.8409 8.6664 15.3336 10.1591 15.3336 12C15.3336 13.8409 13.8409 15.3336 12 15.3336C10.1591 15.3336 8.6672 13.8409 8.6672 12ZM6.86512 12C6.86512 14.836 9.164 17.1349 12 17.1349C14.836 17.1349 17.1349 14.836 17.1349 12C17.1349 9.164 14.836 6.86512 12 6.86512C9.164 6.86512 6.86512 9.164 6.86512 12ZM16.1382 6.66152C16.1381 6.89886 16.2084 7.13089 16.3401 7.32829C16.4719 7.52568 16.6593 7.67956 16.8785 7.77047C17.0977 7.86138 17.339 7.88525 17.5718 7.83904C17.8046 7.79283 18.0185 7.67862 18.1863 7.51087C18.3542 7.34311 18.4686 7.12934 18.515 6.89658C18.5614 6.66382 18.5377 6.42253 18.447 6.20322C18.3563 5.98392 18.2025 5.79644 18.0052 5.6645C17.808 5.53257 17.576 5.4621 17.3386 5.462H17.3382C17.02 5.46215 16.715 5.58856 16.49 5.81347C16.265 6.03837 16.1384 6.34339 16.1382 6.66152ZM7.96 20.1398C6.98504 20.0954 6.45512 19.933 6.10296 19.7958C5.63608 19.614 5.30296 19.3975 4.95272 19.0478C4.60248 18.698 4.38568 18.3652 4.20472 17.8983C4.06744 17.5463 3.90504 17.0162 3.86072 16.0413C3.81224 14.9872 3.80256 14.6706 3.80256 12.0001C3.80256 9.3296 3.81304 9.01384 3.86072 7.95888C3.90512 6.98392 4.06872 6.45488 4.20472 6.10184C4.38648 5.63496 4.60296 5.30184 4.95272 4.9516C5.30248 4.60136 5.63528 4.38456 6.10296 4.2036C6.45496 4.06632 6.98504 3.90392 7.96 3.8596C9.01408 3.81112 9.33072 3.80144 12 3.80144C14.6693 3.80144 14.9862 3.81192 16.0412 3.8596C17.0162 3.904 17.5452 4.0676 17.8982 4.2036C18.3651 4.38456 18.6982 4.60184 19.0485 4.9516C19.3987 5.30136 19.6147 5.63496 19.7965 6.10184C19.9338 6.45384 20.0962 6.98392 20.1405 7.95888C20.189 9.01384 20.1986 9.3296 20.1986 12.0001C20.1986 14.6706 20.189 14.9863 20.1405 16.0413C20.0961 17.0162 19.9329 17.5462 19.7965 17.8983C19.6147 18.3652 19.3982 18.6983 19.0485 19.0478C18.6987 19.3972 18.3651 19.614 17.8982 19.7958C17.5462 19.933 17.0162 20.0954 16.0412 20.1398C14.9871 20.1882 14.6705 20.1979 12 20.1979C9.32952 20.1979 9.01376 20.1882 7.96 20.1398ZM7.8772 2.06056C6.81264 2.10904 6.0852 2.27784 5.44992 2.52504C4.792 2.78032 4.23504 3.1228 3.67848 3.67848C3.12192 4.23416 2.78032 4.792 2.52504 5.44992C2.27784 6.0856 2.10904 6.81264 2.06056 7.8772C2.01128 8.94344 2 9.28432 2 12C2 14.7157 2.01128 15.0566 2.06056 16.1228C2.10904 17.1874 2.27784 17.9144 2.52504 18.5501C2.78032 19.2076 3.122 19.7661 3.67848 20.3215C4.23496 20.877 4.792 21.219 5.44992 21.475C6.0864 21.7222 6.81264 21.891 7.8772 21.9394C8.944 21.9879 9.28432 22 12 22C14.7157 22 15.0566 21.9887 16.1228 21.9394C17.1874 21.891 17.9144 21.7222 18.5501 21.475C19.2076 21.219 19.765 20.8772 20.3215 20.3215C20.8781 19.7658 21.219 19.2076 21.475 18.5501C21.7222 17.9144 21.8918 17.1874 21.9394 16.1228C21.9879 15.0558 21.9992 14.7157 21.9992 12C21.9992 9.28432 21.9879 8.94344 21.9394 7.8772C21.891 6.81256 21.7222 6.0852 21.475 5.44992C21.219 4.7924 20.8772 4.23504 20.3215 3.67848C19.7658 3.12192 19.2076 2.78032 18.5509 2.52504C17.9144 2.27784 17.1874 2.10824 16.1236 2.06056C15.0574 2.01208 14.7165 2 12.0008 2C9.28512 2 8.944 2.01128 7.8772 2.06056Z"
+                                fill="#343C54" />
+                            <path
+                                d="M8.6672 12C8.6672 10.1591 10.1591 8.6664 12 8.6664C13.8409 8.6664 15.3336 10.1591 15.3336 12C15.3336 13.8409 13.8409 15.3336 12 15.3336C10.1591 15.3336 8.6672 13.8409 8.6672 12ZM6.86512 12C6.86512 14.836 9.164 17.1349 12 17.1349C14.836 17.1349 17.1349 14.836 17.1349 12C17.1349 9.164 14.836 6.86512 12 6.86512C9.164 6.86512 6.86512 9.164 6.86512 12ZM16.1382 6.66152C16.1381 6.89886 16.2084 7.13089 16.3401 7.32829C16.4719 7.52568 16.6593 7.67956 16.8785 7.77047C17.0977 7.86138 17.339 7.88525 17.5718 7.83904C17.8046 7.79283 18.0185 7.67862 18.1863 7.51087C18.3542 7.34311 18.4686 7.12934 18.515 6.89658C18.5614 6.66382 18.5377 6.42253 18.447 6.20322C18.3563 5.98392 18.2025 5.79644 18.0052 5.6645C17.808 5.53257 17.576 5.4621 17.3386 5.462H17.3382C17.02 5.46215 16.715 5.58856 16.49 5.81347C16.265 6.03837 16.1384 6.34339 16.1382 6.66152ZM7.96 20.1398C6.98504 20.0954 6.45512 19.933 6.10296 19.7958C5.63608 19.614 5.30296 19.3975 4.95272 19.0478C4.60248 18.698 4.38568 18.3652 4.20472 17.8983C4.06744 17.5463 3.90504 17.0162 3.86072 16.0413C3.81224 14.9872 3.80256 14.6706 3.80256 12.0001C3.80256 9.3296 3.81304 9.01384 3.86072 7.95888C3.90512 6.98392 4.06872 6.45488 4.20472 6.10184C4.38648 5.63496 4.60296 5.30184 4.95272 4.9516C5.30248 4.60136 5.63528 4.38456 6.10296 4.2036C6.45496 4.06632 6.98504 3.90392 7.96 3.8596C9.01408 3.81112 9.33072 3.80144 12 3.80144C14.6693 3.80144 14.9862 3.81192 16.0412 3.8596C17.0162 3.904 17.5452 4.0676 17.8982 4.2036C18.3651 4.38456 18.6982 4.60184 19.0485 4.9516C19.3987 5.30136 19.6147 5.63496 19.7965 6.10184C19.9338 6.45384 20.0962 6.98392 20.1405 7.95888C20.189 9.01384 20.1986 9.3296 20.1986 12.0001C20.1986 14.6706 20.189 14.9863 20.1405 16.0413C20.0961 17.0162 19.9329 17.5462 19.7965 17.8983C19.6147 18.3652 19.3982 18.6983 19.0485 19.0478C18.6987 19.3972 18.3651 19.614 17.8982 19.7958C17.5462 19.933 17.0162 20.0954 16.0412 20.1398C14.9871 20.1882 14.6705 20.1979 12 20.1979C9.32952 20.1979 9.01376 20.1882 7.96 20.1398ZM7.8772 2.06056C6.81264 2.10904 6.0852 2.27784 5.44992 2.52504C4.792 2.78032 4.23504 3.1228 3.67848 3.67848C3.12192 4.23416 2.78032 4.792 2.52504 5.44992C2.27784 6.0856 2.10904 6.81264 2.06056 7.8772C2.01128 8.94344 2 9.28432 2 12C2 14.7157 2.01128 15.0566 2.06056 16.1228C2.10904 17.1874 2.27784 17.9144 2.52504 18.5501C2.78032 19.2076 3.122 19.7661 3.67848 20.3215C4.23496 20.877 4.792 21.219 5.44992 21.475C6.0864 21.7222 6.81264 21.891 7.8772 21.9394C8.944 21.9879 9.28432 22 12 22C14.7157 22 15.0566 21.9887 16.1228 21.9394C17.1874 21.891 17.9144 21.7222 18.5501 21.475C19.2076 21.219 19.765 20.8772 20.3215 20.3215C20.8781 19.7658 21.219 19.2076 21.475 18.5501C21.7222 17.9144 21.8918 17.1874 21.9394 16.1228C21.9879 15.0558 21.9992 14.7157 21.9992 12C21.9992 9.28432 21.9879 8.94344 21.9394 7.8772C21.891 6.81256 21.7222 6.0852 21.475 5.44992C21.219 4.7924 20.8772 4.23504 20.3215 3.67848C19.7658 3.12192 19.2076 2.78032 18.5509 2.52504C17.9144 2.27784 17.1874 2.10824 16.1236 2.06056C15.0574 2.01208 14.7165 2 12.0008 2C9.28512 2 8.944 2.01128 7.8772 2.06056Z"
+                                fill="#343C54" />
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.tiktok.com/@brisk.shoes" class="link-dark link-opacity-75-hover"
+                        data-bs-dismiss="offcanvas" aria-label="TikTok">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#343C54"
+                            xmlns="http://www.w3.org/2000/svg" transform="rotate(0 0 0)">
+                            <path
+                                d="M12.4381 2.01667C13.5298 2 14.6131 2.00833 15.6964 2C15.7631 3.27498 16.2214 4.57497 17.1548 5.47496C18.0881 6.39995 19.4047 6.82494 20.688 6.9666V10.3249C19.488 10.2832 18.2797 10.0332 17.1881 9.51656C16.7131 9.29991 16.2714 9.02491 15.8381 8.74157C15.8298 11.1749 15.8464 13.6082 15.8214 16.0332C15.7548 17.1998 15.3714 18.3581 14.6964 19.3164C13.6048 20.9164 11.7131 21.9581 9.7715 21.9914C8.57986 22.0581 7.38819 21.7331 6.37154 21.1331C4.68823 20.1414 3.50492 18.3248 3.32992 16.3748C3.31325 15.9582 3.30492 15.5415 3.32158 15.1332C3.47158 13.5499 4.25491 12.0332 5.47156 10.9999C6.85488 9.7999 8.78817 9.22491 10.5965 9.56656C10.6131 10.7999 10.5631 12.0332 10.5631 13.2665C9.73816 12.9999 8.77151 13.0749 8.04652 13.5749C7.52153 13.9165 7.12154 14.4415 6.91319 15.0332C6.7382 15.4582 6.7882 15.9248 6.79654 16.3748C6.99654 17.7415 8.31318 18.8914 9.71316 18.7665C10.6465 18.7581 11.5381 18.2165 12.0215 17.4248C12.1798 17.1498 12.3548 16.8665 12.3631 16.5415C12.4465 15.0498 12.4131 13.5665 12.4215 12.0749C12.4298 8.71657 12.4131 5.36661 12.4381 2.01667Z"
+                                fill="#343C54" />
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- Copyright -->
+        <div class="row" style="margin-top: 30px;">
+            <div class="col footer-container">
+                <div class="footer-link">
+                    <div class="footer-copyright-wrapper text-center">
+                        <p>&copy;2025 ONE FIT</p>
+                    </div>
+                    <p style="display: flex;justify-content: center;">All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
